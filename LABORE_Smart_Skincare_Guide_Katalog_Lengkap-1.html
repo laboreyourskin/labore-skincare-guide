@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LABORÉ | Smart Skincare Guide</title>
+<style>
+:root{--ink:#302b2d;--muted:#777074;--rose:#b86f83;--rose2:#f4e5e9;--cream:#fbf8f5;--line:#eadde0;--white:#fff;--green:#758b78}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,Arial,sans-serif}
+header{height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 max(6vw,22px);background:#fff;border-bottom:1px solid #f0e8e8;position:sticky;top:0;z-index:5}
+.logo{font-size:22px;letter-spacing:5px;font-weight:700;color:#79505d}.logo small{display:block;font-size:8px;letter-spacing:3px;color:#9a858c;margin-top:4px}
+nav a{color:#655b60;text-decoration:none;font-size:13px;margin-left:25px}
+.hero{padding:74px 7vw 66px;background:linear-gradient(115deg,#f5e9e9 0%,#f8f2ed 55%,#efe4e3 100%);display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:35px}
+.eyebrow{color:var(--rose);font-size:11px;letter-spacing:3px;font-weight:700}
+h1{font-family:Georgia,serif;font-size:clamp(38px,5vw,64px);line-height:1.06;font-weight:400;margin:18px 0;color:#493b40}
+.hero p{color:#74676d;line-height:1.8;max-width:540px;font-size:15px}
+.hero-art{height:310px;border-radius:48% 48% 20px 20px;background:#f5e8e3 url('https://down-id.img.susercontent.com/file/id-11134207-7r98p-lm19k48hqm4u4f') center/contain no-repeat;position:relative;overflow:hidden}
+.bottle{width:105px;height:190px;border-radius:20px 20px 13px 13px;background:linear-gradient(90deg,#fdfcfa,#e8dcd6,#fff);box-shadow:15px 18px 30px #8e667333;position:relative;margin:0 12px}
+.bottle:before{content:"";position:absolute;top:-24px;left:30px;width:45px;height:27px;border-radius:5px 5px 0 0;background:#9e8583}
+.bottle:after{content:"LABORÉ";position:absolute;top:76px;left:0;right:0;text-align:center;font-size:10px;letter-spacing:2px;color:#856a70}
+.bottle:nth-child(2){height:225px;width:120px;background:linear-gradient(90deg,#fff,#e9e1db,#fff)}
+.bottle:nth-child(3){height:165px;width:92px}
+main{max-width:1100px;margin:auto;padding:65px 24px}
+.section-head{text-align:center;margin-bottom:32px}.section-head h2{font:400 38px Georgia,serif;margin:12px 0}.section-head p{color:var(--muted);font-size:14px;line-height:1.7}
+.quiz{background:#fff;border:1px solid var(--line);border-radius:22px;padding:32px;box-shadow:0 15px 45px #4b30300a}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+label{display:block;font-weight:650;font-size:13px;margin-bottom:10px}
+select{width:100%;padding:15px;border:1px solid #e4d7da;border-radius:11px;background:#fff;color:#4c4347;font-size:14px;outline-color:var(--rose)}
+button{border:0;background:#9f6475;color:white;padding:15px 25px;border-radius:30px;font-weight:650;letter-spacing:.3px;cursor:pointer;transition:.2s}
+button:hover{background:#855365;transform:translateY(-1px)}
+.actions{display:flex;justify-content:center;margin-top:27px}
+#result{display:none;margin-top:30px;padding-top:26px;border-top:1px solid var(--line)}
+.result-top{display:flex;align-items:center;gap:10px;color:var(--green);font-size:12px;font-weight:700;letter-spacing:1px}
+#result h3{font:400 29px Georgia,serif;margin:12px 0}
+.product-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:20px 0}
+.product{padding:20px;border-radius:15px;background:#faf5f3;border:1px solid #f0e4e3}
+.product .number{font-size:11px;color:var(--rose);letter-spacing:2px}
+.product h4{font:400 20px Georgia,serif;margin:9px 0}
+.product p{font-size:13px;line-height:1.65;color:#766b70;margin:0}
+.tag{display:inline-block;margin-top:12px;padding:6px 10px;border-radius:20px;background:#efe2e4;color:#875968;font-size:11px}
+.routine{background:#f6eeee;border-radius:14px;padding:18px 20px;margin-top:16px;font-size:13px;line-height:1.8}
+.disclaimer{font-size:11px;color:#898084;line-height:1.7;margin-top:18px}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.catalog-card{background:white;border:1px solid var(--line);border-radius:17px;padding:18px 17px;min-height:260px}.catalog-card img{width:100%;height:165px;object-fit:contain;background:#fff;border-radius:12px;margin-bottom:10px}.product img{width:100%;height:155px;object-fit:contain;background:#fff;border-radius:10px;margin:10px 0}
+.catalog-card .symbol{width:48px;height:48px;border-radius:50%;background:var(--rose2);display:grid;place-items:center;color:#9b6274;font-size:20px}
+.catalog-card h3{font:400 19px Georgia,serif;margin:17px 0 8px}
+.catalog-card p{font-size:12px;line-height:1.6;color:var(--muted)}
+.about{margin-top:60px;padding:32px;border-radius:18px;background:#f1e7e5;display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.about h2{font:400 29px Georgia,serif;margin:0 0 10px}.about p{font-size:13px;color:#71666a;line-height:1.8;margin:0}
+footer{text-align:center;padding:28px 20px;color:#91858a;font-size:11px;border-top:1px solid #eee4e5}
+@media(max-width:700px){nav{display:none}.hero{grid-template-columns:1fr;padding:55px 24px}.hero-art{height:250px;background-size:contain}.fields,.product-grid,.about{grid-template-columns:1fr}.products{grid-template-columns:1fr 1fr}.quiz{padding:22px}}
+@media(max-width:420px){.products{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">LABORÉ<small>SENSITIVE SKIN CARE</small></div>
+  <nav><a href="#panduan">Panduan Kulit</a><a href="#produk">Produk</a><a href="#tentang">Tentang Proyek</a></nav>
+</header>
+<section class="hero">
+  <div>
+    <div class="eyebrow">YOUR SIMPLE SKINCARE GUIDE</div>
+    <h1>Kenali kebutuhan kulitmu.</h1>
+    <p>Temukan pilihan produk dan rutinitas perawatan dasar melalui panduan interaktif LABORÉ. Jawab beberapa pertanyaan singkat untuk melihat rekomendasi awal.</p>
+    <a href="#panduan"><button>Mulai panduan kulit</button></a>
+  </div>
+  <div class="hero-art" role="img" aria-label="Foto rangkaian produk LABORÉ GentleBiome"></div>
+</section>
+<main>
+<section id="panduan">
+  <div class="section-head"><div class="eyebrow">PERSONAL SKINCARE GUIDE</div><h2>Panduan rekomendasi kulit</h2><p>Pilih jawaban yang paling menggambarkan kebutuhanmu.<br>Hasil akan dicocokkan dengan kategori produk dalam katalog proyek.</p></div>
+  <div class="quiz">
+    <div class="fields">
+      <div><label for="skin">1. Bagaimana jenis kulitmu?</label><select id="skin"><option value="sensitif">Sensitif</option><option value="kering">Cenderung kering</option><option value="berminyak">Cenderung berminyak</option><option value="kombinasi">Kombinasi</option><option value="belum">Belum yakin</option></select></div>
+      <div><label for="concern">2. Apa kebutuhan utamamu?</label><select id="concern"><option value="basic">Rutinitas dasar</option><option value="clean">Membersihkan wajah</option><option value="moist">Menjaga kelembapan</option><option value="sun">Perlindungan dari sinar matahari</option></select></div>
+      <div><label for="texture">3. Tekstur yang kamu sukai?</label><select id="texture"><option value="any">Tidak ada preferensi</option><option value="gel">Gel / ringan</option><option value="cream">Krim</option></select></div>
+      <div><label for="period">4. Rutinitas yang ingin dilihat?</label><select id="period"><option value="both">Pagi dan malam</option><option value="morning">Pagi</option><option value="night">Malam</option></select></div>
+    </div>
+    <div class="actions"><button onclick="recommend()">Lihat rekomendasiku&nbsp; ↗</button></div>
+    <div id="result" aria-live="polite"></div>
+  </div>
+</section>
+<section id="produk" style="margin-top:75px">
+  <div class="section-head"><div class="eyebrow">PRODUCT CATALOG</div><h2>Kategori produk LABORÉ</h2><p>Empat nama produk yang digunakan dalam simulasi proyek ini.</p></div>
+  <div class="products">
+    <article class="catalog-card"><img src="https://medias.watsons.co.id/publishing/WTCID-74823-back-zoom.jpg?version=1776094791" alt="LABORÉ GentleBiome Mild Cleanser" loading="lazy"><h3>GentleBiome Mild Cleanser</h3><p>Kategori: pembersih wajah untuk langkah membersihkan kulit.</p></article>
+    <article class="catalog-card"><img src="https://down-id.img.susercontent.com/file/sg-11134201-7ratm-mb6ukmmwsoa1bf" alt="LABORÉ BiomeRepair Barrier Revive Cream" loading="lazy"><h3>BiomeRepair Barrier Revive Cream</h3><p>Kategori: pelembap dengan tekstur krim.</p></article>
+    <article class="catalog-card"><img src="https://image.astronauts.cloud/product-images/2025/8/8993137008754_cb56a046-46af-4497-a96c-638152e2eabe_900x900.jpg" alt="LABORÉ BiomeProtect Physical Sunscreen" loading="lazy"><h3>BiomeProtect Physical Sunscreen</h3><p>Kategori: perlindungan kulit dari paparan sinar matahari.</p></article>
+    <article class="catalog-card"><img src="https://labore-assetstorage.s3.ap-southeast-1.amazonaws.com/media/catalog/product/cache/37b554b2ac4224f839514261d11e59ec/p/r/product_packshot_sku_product_detail_457x457_labore___skin_nutrition_gel_1_.png" alt="LABORÉ GentleBiome Skin Nutrition Gel" loading="lazy"><h3>GentleBiome Skin Nutrition Gel</h3><p>Kategori: pelembap dengan tekstur gel.</p></article>
+    <article class="catalog-card"><img src="https://down-id.img.susercontent.com/file/id-11134207-7r991-lw864mmjdh1m86" alt="LABORÉ AcnePro Biome Sebum and Acne Cleansing Mousse" loading="lazy"><h3>AcnePro Biome Sebum &amp; Acne Cleansing Mousse</h3><p>Pembersih wajah untuk kategori kulit berjerawat dan berminyak.</p></article>
+    <article class="catalog-card"><img src="https://down-id.img.susercontent.com/file/id-11134207-7r98r-lwjsslchliwt40" alt="LABORÉ AcnePro Biome series" loading="lazy"><h3>AcnePro Biome Micro Exfoliating Gentle Toner</h3><p>Toner eksfoliasi dari rangkaian AcnePro Biome.</p></article>
+    <article class="catalog-card"><img src="https://down-id.img.susercontent.com/file/id-11134207-7r98r-lwjsslchliwt40" alt="LABORÉ AcnePro Biome Intensive Acne Serum" loading="lazy"><h3>AcnePro Biome Intensive Acne Serum</h3><p>Serum dari rangkaian perawatan AcnePro Biome.</p></article>
+    <article class="catalog-card"><img src="https://down-id.img.susercontent.com/file/id-11134207-7r98r-lwjsslchliwt40" alt="LABORÉ AcnePro Biome Acne Spot Gel" loading="lazy"><h3>AcnePro Biome Acne Spot Gel</h3><p>Gel perawatan lokal dari rangkaian AcnePro Biome.</p></article>
+    <article class="catalog-card"><img src="https://down-id.img.susercontent.com/file/id-11134207-7rbk2-m9ymtvndme4bdf" alt="LABORÉ GentleBiome Hydration Toner" loading="lazy"><h3>GentleBiome Hydration Toner</h3><p>Toner untuk membantu menjaga hidrasi setelah membersihkan wajah.</p></article>
+    <article class="catalog-card"><img src="https://down-id.img.susercontent.com/file/id-11134207-7r98p-lm19k48hqm4u4f" alt="LABORÉ GentleBiome Thermal Soothing Mist" loading="lazy"><h3>GentleBiome Thermal Soothing Mist</h3><p>Face mist dari rangkaian GentleBiome.</p></article>
+    <article class="catalog-card"><img src="https://down-id.img.susercontent.com/file/id-11134207-7r98p-lm19k48hqm4u4f" alt="LABORÉ GentleBiome Hydrating Face and Body Cleanser" loading="lazy"><h3>GentleBiome Hydrating Face &amp; Body Cleanser</h3><p>Pembersih untuk wajah dan tubuh dari rangkaian GentleBiome.</p></article>
+    <article class="catalog-card"><img src="https://down-id.img.susercontent.com/file/id-11134207-7r98p-lm19k48hqm4u4f" alt="LABORÉ BiomeRepair Topicalm Cream" loading="lazy"><h3>BiomeRepair Topicalm Cream</h3><p>Pelembap dari rangkaian BiomeRepair.</p></article>
+
+  </div>
+<p class="disclaimer">Foto produk dan foto rangkaian LABORÉ ditampilkan sebagai referensi visual dari materi katalog dan mitra penjual. Beberapa foto rangkaian menampilkan lebih dari satu produk. Ketersediaan ukuran atau desain kemasan dapat berubah.</p>
+</section>
+<section class="about" id="tentang">
+  <div><div class="eyebrow">ABOUT THIS PROJECT</div><h2>Teknologi sederhana, pengalaman yang mudah.</h2></div>
+  <p>Website ini merupakan prototipe sistem rekomendasi berbasis aturan (rule-based). Sistem mencocokkan pilihan pengguna dengan kategori produk yang tersedia. Proyek ini menjadi simulasi konsep sistem cerdas dan belum menggunakan model kecerdasan buatan generatif atau machine learning yang dilatih.</p>
+</section>
+<p class="disclaimer">Catatan: Hasil ini merupakan panduan awal, bukan diagnosis atau saran medis dan tidak menjamin kecocokan produk pada setiap orang. Periksa informasi resmi, komposisi, serta petunjuk pemakaian pada kemasan. Lakukan uji tempel pada area kecil terlebih dahulu. Hentikan pemakaian jika terjadi iritasi; konsultasikan dengan tenaga kesehatan bila keluhan berat atau menetap.</p>
+</main>
+<footer>PROYEK KELOMPOK 7 · TEKNOLOGI DIGITAL · SIMULASI SISTEM REKOMENDASI</footer>
+<script>
+const products={
+ clean:{name:"GentleBiome Mild Cleanser",image:"https://medias.watsons.co.id/publishing/WTCID-74823-back-zoom.jpg?version=1776094791",category:"Pembersih wajah",desc:"Dipilih sebagai langkah membersihkan wajah dalam rutinitas dasar. Ikuti petunjuk pemakaian pada kemasan."},
+ cream:{name:"BiomeRepair Barrier Revive Cream",image:"https://down-id.img.susercontent.com/file/sg-11134201-7ratm-mb6ukmmwsoa1bf",category:"Pelembap krim",desc:"Pilihan kategori pelembap bertekstur krim untuk pengguna yang memilih tekstur krim."},
+ sun:{name:"BiomeProtect Physical Sunscreen",image:"https://image.astronauts.cloud/product-images/2025/8/8993137008754_cb56a046-46af-4497-a96c-638152e2eabe_900x900.jpg",category:"Perlindungan matahari",desc:"Produk kategori perlindungan matahari untuk rutinitas pagi. Ikuti petunjuk penggunaan dan pengulangan pada label."},
+ gel:{name:"GentleBiome Skin Nutrition Gel",image:"https://labore-assetstorage.s3.ap-southeast-1.amazonaws.com/media/catalog/product/cache/37b554b2ac4224f839514261d11e59ec/p/r/product_packshot_sku_product_detail_457x457_labore___skin_nutrition_gel_1_.png",category:"Pelembap gel",desc:"Pilihan kategori pelembap bertekstur gel untuk pengguna yang menyukai tekstur ringan."}
+};
+function recommend(){
+ const skin=document.getElementById('skin').value, concern=document.getElementById('concern').value, texture=document.getElementById('texture').value, period=document.getElementById('period').value;
+ let chosen=[];
+ if(concern==="clean"||concern==="basic") chosen.push(products.clean);
+ if(concern==="moist"||concern==="basic"){
+   if(texture==="gel") chosen.push(products.gel);
+   else if(texture==="cream") chosen.push(products.cream);
+   else chosen.push(products.cream,products.gel);
+ }
+ if(concern==="sun"||concern==="basic") chosen.push(products.sun);
+ let routine;
+ if(period==="morning") routine="Pagi: bersihkan wajah → gunakan pelembap sesuai kebutuhan → gunakan tabir surya sesuai petunjuk label.";
+ else if(period==="night") routine="Malam: bersihkan wajah → gunakan pelembap sesuai kebutuhan.";
+ else routine="Pagi: bersihkan wajah → pelembap → tabir surya. Malam: bersihkan wajah → pelembap.";
+ const skinText={sensitif:"sensitif",kering:"cenderung kering",berminyak:"cenderung berminyak",kombinasi:"kombinasi",belum:"belum yakin"}[skin];
+ const result=document.getElementById('result');
+ result.style.display="block";
+ result.innerHTML=`<div class="result-top">✓ HASIL PANDUAN AWAL</div><h3>Rekomendasi untuk kulit ${skinText}</h3><p style="color:#766b70;font-size:13px;line-height:1.7">Sistem mencocokkan kebutuhan dan preferensi tekstur yang kamu pilih dengan kategori produk berikut:</p><div class="product-grid">${chosen.map((p,i)=>`<article class="product"><div class="number">PILIHAN ${String(i+1).padStart(2,'0')}</div><h4>${p.name}</h4><img src="${p.image}" alt="${p.name}" loading="lazy"><p>${p.desc}</p><span class="tag">${p.category}</span></article>`).join('')}</div><div class="routine"><b>Contoh urutan rutinitas</b><br>${routine}</div><p class="disclaimer">Metode: pencocokan berbasis aturan (rule-based). Jenis kulit yang dipilih digunakan sebagai konteks hasil, bukan diagnosis. Rekomendasi tidak menjamin produk cocok untuk setiap orang.</p>`;
+ result.scrollIntoView({behavior:"smooth",block:"nearest"});
+}
+</script>
+</body>
+</html>
